@@ -16,7 +16,7 @@ namespace CoreEscuela.Entidades {
 
         public TiposEscuela TipoEscuela {get;set;}
         //public Escuela (string nam, int age) => (Name, AñoDeCreación) = (nam, age);
-
+        public Curso[] Cursos {get; set;}
         public Escuela (string nam, int age, TiposEscuela tipo, string pais="", 
         string ciudad=""){
             this.Name = nam;

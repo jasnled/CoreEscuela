@@ -1,30 +1,32 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using CoreEscuela.Entidades;
-namespace CoreEscuela {
-
+namespace CoreEscuela
+{
     class Program
     {
         private static void Main(string[] args)
         {
-            string message; 
+            string message;
             var escuela = new Escuela("Republica de Haití", 1923, TiposEscuela.Primaria, ciudad: "San Jose");
-         
-            message = escuela.Name+" ubicada en "+escuela.Ciudad;
+
+            message = escuela.Name + " ubicada en " + escuela.Ciudad;
             Console.WriteLine(message);
-            
-            Curso[] cursos = new Curso[3]; 
-            Curso curso1 = new Curso("101", TiposJornada.Mañana);
-            Curso curso2 = new Curso("201", TiposJornada.Tarde);
-            Curso curso3 = new Curso("301", TiposJornada.Noche);
-            cursos[0] = curso1;
-            cursos[1] = curso2;
-            cursos[2] = curso3;
+
+            escuela.Cursos = new Curso[]{
+                new Curso("101", TiposJornada.Mañana),
+                new Curso("201", TiposJornada.Tarde),
+                new Curso("301", TiposJornada.Noche)
+            };
+          
+            ImprimirCursos(escuela);
+        }
+        public static void ImprimirCursos(Escuela escuela){
+            Console.WriteLine("==========================");
             Console.WriteLine(escuela);
             Console.WriteLine("==========================");
-            
-            foreach (Curso cur in cursos){
+            foreach (Curso cur in escuela.Cursos){
                 Console.WriteLine(cur);
-            }
+             }
         }
     }
-} 
+}
